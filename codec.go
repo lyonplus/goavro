@@ -410,8 +410,11 @@ func (c *Codec) NativeFromSingle(buf []byte) (interface{}, []byte, error) {
 //         // Output: map[next:map[LongList:map[next:map[LongList:map[next:<nil>]]]]]
 //     }
 func (c *Codec) NativeFromTextual(buf []byte) (interface{}, []byte, error) {
+	fmt.Printf("NativeFromTextual: Codec: %v\n", *c)
+
 	value, newBuf, err := c.nativeFromTextual(buf)
 	if err != nil {
+		fmt.Printf("NativeFromTextual: buf: %s, err: %v\n", string(buf), err)
 		return nil, buf, err // if error, return original byte slice
 	}
 	return value, newBuf, nil
