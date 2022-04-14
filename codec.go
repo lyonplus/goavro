@@ -414,8 +414,8 @@ func (c *Codec) NativeFromTextual(buf []byte) (interface{}, []byte, error) {
 
 	value, newBuf, err := c.nativeFromTextual(buf)
 	if err != nil {
-		fmt.Printf("NativeFromTextual: buf: %s, err: %v\n", string(buf), err)
-		err = fmt.Errorf("NativeFromTextual: buf: %s, codec: %v, err: %v",
+		fmt.Printf("NativeFromTextual: buf: %s, codec: %v, err: %v\n", string(buf), *c, err)
+		err = fmt.Errorf("NativeFromTextual: error buf: %s, codec: %v, err: %v",
 			string(buf), *c, err)
 		return nil, buf, err // if error, return original byte slice
 	}
